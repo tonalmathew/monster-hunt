@@ -50,7 +50,7 @@
             <button id="give-up" @click="giveUp">GIVE UP</button>
         </div>
     </section>
-    <section class="row log" v-if="logger.length > 0 && isGameOn">
+    <section class="row log" v-if="logger.length > 0">
         <div class="small-12 columns">
             <ul>
                 <li v-for="logs in logger"
