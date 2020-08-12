@@ -3,32 +3,54 @@ new Vue({
     data: {
         playerHealth: 100,
         monsterHealth: 100,
-        isGameOn: false
+        isGameOn: false,
+        logger: []
     },
     methods: {
         startGame: function() {
             this.isGameOn = true,
             this.playerHealth = 100,
-            this.monsterHealth = 100
+            this.monsterHealth = 100,
+            this.logger = []
 
         },
         attack: function() {
-            this.monsterHealth -= this.calculateDamage(3, 10);
+            var damage = this.calculateDamage(3, 10);
+            this.monsterHealth -= damage;
+            this.logger.unshift({
+                isPlayer: true,
+                text: "player hit Monster by" + damage
+            });
             if(this.winOrNot()) {
                 return;
             }
 
-            this.playerHealth -= this.calculateDamage(5, 15);
+            damage = this.calculateDamage(5, 15);
+            this.playerHealth -= damage;
+            this.logger.unshift({
+                isPlayer: false,
+                text: "Monster hit player by" + damage
+            });
             this.winOrNot();
 
         },
         specialAttack: function() {
-            this.monsterHealth -= this.calculateDamage(13, 20);
+            var damage = this.calculateDamage(13, 20);
+            this.monsterHealth -= damage;
+            this.logger.unshift({
+                isPlayer: true,
+                text: "player hit Monster by" + damage
+            });
             if(this.winOrNot()) {
                 return;
             }
 
-            this.playerHealth -= this.calculateDamage(5, 15);
+            damage = this.calculateDamage(5, 15);
+            this.playerHealth -= damage;
+            this.logger.unshift({
+                isPlayer: false,
+                text: "Monster hit player by" + damage
+            });
             this.winOrNot();
            
 
@@ -41,11 +63,16 @@ new Vue({
             }
 
             this.playerHealth -= this.calculateDamage(5, 15);
+            this.logger.unshift({
+                isPlayer: false,
+                text: "player Healed by 10"
+            });
             this.winOrNot();
 
 
         },
         giveUp: function() {
+            this.isGameOn = false;
 
         },
         calculateDamage: function(min, max) {

@@ -50,16 +50,18 @@
             <button id="give-up" @click="giveUp">GIVE UP</button>
         </div>
     </section>
-    <section class="row log">
+    <section class="row log" v-if="logger.length > 0 && isGameOn">
         <div class="small-12 columns">
             <ul>
-                <li>
-
+                <li v-for="logs in logger"
+                    :class="{'player-turn': logs.isPlayer, 'monster-turn': !logs.isPlayer}"
+                >
+                    {{ logs.text }}
                 </li>
             </ul>
         </div>
     </section>
 </div>
-</body>
 <script src="app.js"></script>
+</body>
 </html>
