@@ -10,6 +10,15 @@
     transition: width 500ms;
 }
 
+.player-monster-health-low {
+    background-color: red;
+}
+
+.player-monster-health-high {
+    background-color: green;
+}
+
+
 .controls, .log {
     margin-top: 30px;
     text-align: center;

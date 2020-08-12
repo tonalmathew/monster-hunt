@@ -14,8 +14,9 @@
             <div class="healthbar">
                 <div 
                   class="healthbar text-center" 
-                  style="background-color: green; margin: 0; color: white;"
-                  :style= "{width: playerHealth + '%'}"  
+                  style="margin: 0; color: white;"
+                  :style= "{width: playerHealth + '%'}" 
+                  :class="{'player-monster-health-low': playerHealth <= 30, 'player-monster-health-high': playerHealth >30}" 
                 >
                     {{ playerHealth }}
                 </div>
@@ -26,8 +27,9 @@
             <div class="healthbar">
                 <div 
                   class="healthbar text-center" 
-                  style="background-color: green; margin: 0; color: white;"
+                  style="margin: 0; color: white;"
                   :style= "{width: monsterHealth + '%'}"
+                  :class="{'player-monster-health-low': monsterHealth <= 30, 'player-monster-health-high': monsterHealth >30}"
                 >
                     {{ monsterHealth }}
                 </div>
